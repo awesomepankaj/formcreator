@@ -1,6 +1,12 @@
 body {
   margin: 0;
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
+}
+
+pre {
+  font-family: Roboto, sans-serif;
+  white-space: pre;
+  margin: 1em 0;
 }
 
 .header {
@@ -38,6 +44,14 @@ body {
 }
 .defaultDescription {
   font-size: 16px;
+}
+
+.formFieldCont {
+  padding: 20px 10px 10px 20px;
+}
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
 }
 
 @media only screen and (max-width: 480px) {

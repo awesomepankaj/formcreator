@@ -1,11 +1,15 @@
 import React from 'react'
 import _ from 'lodash'
 
+import ShortField from './formFields/ShortField'
+import ShowSchema from './formFields/ShowSchema'
+import SelectField from './formFields/Select'
+
 export default class AddField extends React.Component {
   
   render() {
 
-    let {selectedField} = this.props
+    let {selectedField, addToSchema} = this.props
 
     return (
       <div className="AddFieldCont">
@@ -20,10 +24,22 @@ export default class AddField extends React.Component {
           </div>)
          :
           (<div className="formFieldCont">
-            Starting 
+            {this.getSelectedFieldView()}
           </div>)
         }
       </div>
     )
   }
+
+  getSelectedFieldView = () => {
+
+    let {selectedField, addToSchema, schema} = this.props
+
+    switch(selectedField) {
+      case 'shortText': return <ShortField addToSchema={addToSchema}/>
+      case 'showSchema': return <ShowSchema schema={schema}/>
+      case 'choiceList': return <SelectField addToSchema={addToSchema}/>
+    }
+  }
 }
+

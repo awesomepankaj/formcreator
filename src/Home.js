@@ -2,10 +2,6 @@ import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
-
-injectTapEventPlugin();
-
 import Widgets from './Widgets'
 import AddField from './AddField'
 
@@ -15,7 +11,8 @@ export default class MyAwesomeReactComponent extends React.Component {
     super(props)
     this.state = {
       formValue: 'Untitled Form',
-      selectedField: ''
+      selectedField: '',
+      schema: {}
     }
   }
 
@@ -32,10 +29,16 @@ export default class MyAwesomeReactComponent extends React.Component {
       selectedField: value    
     })
   }
+
+  addToSchema = (fieldName, field) => {
+
+    this.state.schema[fieldName] = field 
+    this.forceUpdate()
+  }
   
   render() {
 
-    let {formValue, selectedField} = this.state
+    let {formValue, selectedField, schema} = this.state
 
     return (
       <div className="container">
@@ -57,7 +60,7 @@ export default class MyAwesomeReactComponent extends React.Component {
               fullWidth={true}
             />
             <div className="formFields">
-              <AddField selectedField={selectedField}/> 
+              <AddField selectedField={selectedField} addToSchema={this.addToSchema} schema={schema}/> 
             </div>
           </div>
         </div>
