@@ -10,20 +10,23 @@ import _ from 'lodash'
 
 import config from '../config'
 
+let initialState = {
+  fieldType: '',
+  openLanguageSelector: false,
+  labels: [],
+  defaultValue: '',
+  multiLine: false,
+  required: false,
+  fieldName: '',
+}
+
+
 export default class ShortField extends React.Component {
 
   constructor(props) {
     super(props)
     
-    this.state = {
-      fieldType: '',
-      openLanguageSelector: false,
-      labels: [],
-      defaultValue: '',
-      multiLine: false,
-      required: false,
-      fieldName: '',
-    }
+    this.state = initialState  
   }
 
   showLanguageSelector = (e) => {
@@ -97,6 +100,8 @@ export default class ShortField extends React.Component {
     }, field)
 
     this.props.addToSchema(this.state.fieldName, fieldVal)
+    this.state.labels.splice(0, this.state.labels.length)
+    this.setState(initialState)
   }
   
   handleFieldName = (event, value) => {
@@ -107,6 +112,7 @@ export default class ShortField extends React.Component {
   }
   
   render() {
+
 
     let {fieldType, openLanguageSelector, anchorEl, labels, defaultValue, multiLine, required, fieldName} = this.state
     let checkBoxStyle = {marginTop: 16}

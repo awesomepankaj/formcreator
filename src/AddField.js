@@ -4,6 +4,7 @@ import _ from 'lodash'
 import ShortField from './formFields/ShortField'
 import ShowSchema from './formFields/ShowSchema'
 import SelectField from './formFields/Select'
+import Checkbox from './formFields/CheckBox'
 
 export default class AddField extends React.Component {
   
@@ -39,6 +40,7 @@ export default class AddField extends React.Component {
       case 'shortText': return <ShortField addToSchema={addToSchema}/>
       case 'showSchema': return <ShowSchema schema={schema}/>
       case 'choiceList': return <SelectField addToSchema={addToSchema}/>
+      case 'checkBox': return <Checkbox addToSchema={addToSchema}/>
     }
   }
 }

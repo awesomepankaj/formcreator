@@ -11,20 +11,22 @@ import keycode from 'keycode'
 
 import config from '../config'
 
+let initialState = {
+  fieldName: '',
+  fieldType: '',
+  options: [],
+  optionVal: '',
+  fieldLabel: '',
+  labels: [],
+  openLanguageSelector: false
+}
+
 export default class Select extends React.Component {
   
   constructor(props) {
     super(props)
 
-    this.state = {
-      fieldName: '',
-      fieldType: '',
-      options: [],
-      optionVal: '',
-      fieldLabel: '',
-      labels: [],
-      openLanguageSelector: false
-    }
+    this.state = initialState  
   }
 
   handleFieldName = (e, value) => {
@@ -112,6 +114,8 @@ export default class Select extends React.Component {
     }, field)
 
     this.props.addToSchema(this.state.fieldName, fieldVal)
+    this.state.labels.splice(0, this.state.labels.length)
+    this.setState(initialState)
   }
 
   selectFieldType = (event, index, value) => {
@@ -123,7 +127,6 @@ export default class Select extends React.Component {
 
   
   render() {
-
     let {fieldName, options, optionVal, fieldLabel, labels, openLanguageSelector, defaultValue, fieldType} = this.state
     
     return (
