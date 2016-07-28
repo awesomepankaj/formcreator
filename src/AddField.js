@@ -39,7 +39,8 @@ export default class AddField extends React.Component {
     switch(selectedField) {
       case 'shortText': return <ShortField addToSchema={addToSchema}/>
       case 'showSchema': return <ShowSchema schema={schema}/>
-      case 'choiceList': return <SelectField addToSchema={addToSchema}/>
+      case 'choiceList': return <SelectField addToSchema={addToSchema} fieldTypePath='shortFieldTypes'/>
+      case 'multipleChoice': return <SelectField addToSchema={addToSchema} fieldTypePath='multiFieldTypes'/>
       case 'checkBox': return <Checkbox addToSchema={addToSchema}/>
     }
   }

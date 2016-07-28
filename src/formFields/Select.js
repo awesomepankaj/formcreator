@@ -18,7 +18,8 @@ let initialState = {
   optionVal: '',
   fieldLabel: '',
   labels: [],
-  openLanguageSelector: false
+  openLanguageSelector: false,
+  defaultValue: ''
 }
 
 export default class Select extends React.Component {
@@ -115,6 +116,7 @@ export default class Select extends React.Component {
 
     this.props.addToSchema(this.state.fieldName, fieldVal)
     this.state.labels.splice(0, this.state.labels.length)
+    this.state.options.splice(0, this.state.options.length)
     this.setState(initialState)
   }
 
@@ -128,6 +130,7 @@ export default class Select extends React.Component {
   
   render() {
     let {fieldName, options, optionVal, fieldLabel, labels, openLanguageSelector, defaultValue, fieldType} = this.state
+    let {fieldTypePath} = this.props
     
     return (
       <div className="fieldContainer"> 
@@ -143,7 +146,7 @@ export default class Select extends React.Component {
           floatingLabelText='Field Type'
           onChange={this.selectFieldType}
         > 
-          {config.shortFieldTypes.map((type, i) => {
+          {config[fieldTypePath].map((type, i) => {
 
             return <MenuItem key={i} value={type} primaryText={type.label}/>
           })} 

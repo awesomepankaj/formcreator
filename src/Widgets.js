@@ -15,10 +15,6 @@ let createWidgets = [
     iconType: 'shortText' 
   },
   {
-    label: 'Long Text',
-    iconType: 'longText'
-  },
-  {
     label: 'CheckBox',
     iconType: 'checkBox'
   },

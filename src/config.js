@@ -13,6 +13,20 @@ const config = {
       value: Date
     }
   ],
+  multiFieldTypes: [
+    {
+      label: 'Array',
+      value: Array
+    },
+    {
+      label: 'Classifications',
+      value: Array 
+    },
+    {
+      label: 'Speakers',
+      value: Array
+    }
+  ],
   languages: [
     'english',
     'tibetan'
